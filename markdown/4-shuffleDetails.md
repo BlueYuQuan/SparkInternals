@@ -43,12 +43,12 @@ ShuffleMapTask 的执行过程很简单：先利用 pipeline 计算得到 finalR
 
 ![reduceByKey](PNGfigures/reduceByKeyStage.png)
 
-很自然地，要计算 ShuffleRDD 中的数据，必须先把 MapPartitionsRDD 中的数据 fetch 过来。那么问题就来了：
+很自然地，要计算 ShuffleRDD 中的数据，必须先把 MapPartitionsRDD 中的数据 fetch 过来。**那么问题就来了**：
 
-- 在什么时候 fetch，parent stage 中的一个 ShuffleMapTask 执行完还是等全部 ShuffleMapTasks 执行完？
-- 边 fetch 边处理还是一次性 fetch 完再处理？
-- fetch 来的数据存放到哪里？
-- 怎么获得要 fetch 的数据的存放位置？
+- **在什么时候 fetch，parent stage 中的一个 ShuffleMapTask 执行完还是等全部 ShuffleMapTasks 执行完？**
+- **边 fetch 边处理还是一次性 fetch 完再处理？**
+- **fetch 来的数据存放到哪里？**
+- **怎么获得要 fetch 的数据的存放位置？**
 
  
 解决问题：
